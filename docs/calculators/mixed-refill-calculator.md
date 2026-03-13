@@ -1,12 +1,12 @@
 # Calculator Roadmap
 
 ## Tool
-**Name:** PDEO New to Medicare PDP/MA-PD (Prescriptions on a Consistent Refill Schedule) Original PDP/MA-PD Cost Calculator
+**Name:** PDEO New to Medicare PDP/MA-PD (Prescriptions on a Mixed Refill Schedule) Original PDP/MA-PD Cost Calculator
 
-**Folder:** `pdeo-tools/new-consistent-schedule-calculator/`
+
 
 ## Purpose
-This calculator helps users quickly calculate the Original PDP/MA-PD Cost for a New to Medicare PDP/MA-PD enrollment scenario when all prescriptions follow the same refill schedule and that schedule is not 30 days.
+This calculator helps users quickly calculate the Original PDP/MA-PD Cost for a New to Medicare PDP/MA-PD enrollment scenario when all prescriptions follow a mixed refill schedule and that schedule is not 30 days.
 
 ## Current State
 - Calculator logic exists in `index.html`
