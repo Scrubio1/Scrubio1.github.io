@@ -1,4 +1,4 @@
-How to insert the html STARS Manual description 
+# How to insert the HTML STARS Manual description
 
 Click the clipboard icon in the component to copy the code
 Go to the Resource Library and Select the STARS Manual
@@ -11,4 +11,4 @@ Check the update date and other information is correct
 Select Upload
 Be proud of yourself - you did another coding thing, nerd 🤓
 
-last updated April 7 2026
+_Last updated: April 7, 2026_

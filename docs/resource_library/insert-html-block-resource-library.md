@@ -1,5 +1,5 @@
 
-How to Insert an HTML Block into a Resource Library Page
+# How to Insert an HTML Block into a Resource Library Page
 
 Click the clipboard icon in the component above to copy the code
 Go to the Resource Library and Select the item you wish to edit in the Resource Library
@@ -13,4 +13,4 @@ Check the update date and other information is correct
 Select Upload
 Be proud of yourself - you did a coding thing, nerd 🤓
 
-last updated april 7 2026
+_Last updated: April 7, 2026_
