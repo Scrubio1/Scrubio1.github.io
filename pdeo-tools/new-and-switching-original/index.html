@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Refills Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scrollable-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .scrollable-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollable-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .scrollable-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .scrollable-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Coverage Period Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Coverage Period</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">First Coverage Month from New to Medcare PDP/MA-PD Plan Details</label>
+                    <select id="firstCoverageMonth" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Total Coverage Months</label>
+                    <div id="totalCoverageMonths" class="bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">0 months</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Form -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Medication Information</h2>
+            
+            <!-- Medications Container -->
+            <div id="medicationsContainer" class="scrollable-container border border-gray-200 rounded-lg p-4 mb-6">
+                <div class="medication-row mb-4 p-4 border border-gray-100 rounded-lg bg-gray-50" data-row="0">
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
+                            <input type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
+                            <input type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
+                            <select class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select frequency</option>
+                                <option value="1">Every month</option>
+                                <option value="2">Every 2 months</option>
+                                <option value="3">Every 3 months</option>
+                                <option value="6">Every 6 months</option>
+                                <option value="12">Every 12 months</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Number of Refills</label>
+                            <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold">0</div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Total</label>
+                            <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Medication Button -->
+            <button id="addMedicationBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mb-6">
+                + Add Medication
+            </button>
+
+            <!-- Validation Warning -->
+            <div id="validationWarning" class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 hidden">
+                <div class="flex items-center">
+                    <div class="text-red-600 mr-2">⚠️</div>
+                    <div class="text-red-800 font-medium">Please complete the following:</div>
+                </div>
+                <ul id="validationList" class="text-red-700 text-sm mt-2 ml-6 list-disc"></ul>
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="text-center">
+                <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors duration-200 shadow-lg">
+                    Calculate Original PDP/MA-PD Cost
+                </button>
+            </div>
+        </div>
+
+        <!-- Cost Breakdown Section (Initially Hidden) -->
+        <div id="costBreakdown" class="bg-white rounded-lg shadow-lg p-6 mt-6 hidden">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Cost Breakdown</h2>
+            <div id="breakdownContainer" class="scrollable-container border border-gray-200 rounded-lg p-4">
+                <div id="breakdownList"></div>
+                <div class="border-t border-gray-300 pt-4 mt-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-semibold text-gray-800">Total Coverage Period Cost:</span>
+                        <span id="totalCost" class="text-xl font-bold text-blue-600">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let medicationCount = 1;
+
+        // Function to format currency
+        function formatCurrency(amount) {
+            return '$' + parseFloat(amount || 0).toFixed(2);
+        }
+
+        // Function to calculate total coverage months
+        function calculateTotalCoverageMonths() {
+            const firstMonth = parseInt(document.getElementById('firstCoverageMonth').value);
+            if (firstMonth) {
+                const totalMonths = 12 - firstMonth + 1;
+                document.getElementById('totalCoverageMonths').textContent = totalMonths + ' months';
+                updateAllCalculations();
+                return totalMonths;
+            } else {
+                document.getElementById('totalCoverageMonths').textContent = '0 months';
+                updateAllCalculations();
+                return 0;
+            }
+        }
+
+        // Streamlined function to calculate refills and total for a single row
+        function updateRowCalculations(row) {
+            const firstMonth = parseInt(document.getElementById('firstCoverageMonth').value);
+            const refillFrequency = parseInt(row.querySelector('.refill-frequency').value);
+            const retailCost = parseFloat(row.querySelector('.retail-cost').value) || 0;
+            
+            let numRefills = 0;
+            if (firstMonth && refillFrequency) {
+                const totalCoverageMonths = 12 - firstMonth + 1;
+                numRefills = Math.ceil(totalCoverageMonths / refillFrequency);
+            }
+            
+            row.querySelector('.num-refills').textContent = numRefills;
+            const total = retailCost * numRefills;
+            row.querySelector('.row-total').textContent = formatCurrency(total);
+            
+            return { numRefills, total };
+        }
+
+        // Function to update all rows when coverage period changes
+        function updateAllCalculations() {
+            const rows = document.querySelectorAll('.medication-row');
+            rows.forEach(row => updateRowCalculations(row));
+        }
+
+        // Validation function
+        function validateInputs() {
+            const validationWarning = document.getElementById('validationWarning');
+            const validationList = document.getElementById('validationList');
+            const errors = [];
+            
+            // Check if first coverage month is selected
+            const firstMonth = document.getElementById('firstCoverageMonth').value;
+            if (!firstMonth) {
+                errors.push('Select a First Coverage Month');
+            }
+            
+            // Check each medication row for missing refill frequency
+            const rows = document.querySelectorAll('.medication-row');
+            let missingFrequency = false;
+            rows.forEach((row, index) => {
+                const prescriptionName = row.querySelector('.prescription-name').value;
+                const refillFrequency = row.querySelector('.refill-frequency').value;
+                const retailCost = row.querySelector('.retail-cost').value;
+                
+                if ((prescriptionName || retailCost) && !refillFrequency) {
+                    missingFrequency = true;
+                }
+            });
+            
+            if (missingFrequency) {
+                errors.push('Select Refill Frequency for all medications');
+            }
+            
+            // Show or hide validation warning
+            if (errors.length > 0) {
+                validationList.innerHTML = errors.map(error => `<li>${error}</li>`).join('');
+                validationWarning.classList.remove('hidden');
+                return false;
+            } else {
+                validationWarning.classList.add('hidden');
+                return true;
+            }
+        }
+
+        // Function to add event listeners to a row
+        function addRowEventListeners(row) {
+            const retailCostInput = row.querySelector('.retail-cost');
+            const refillFrequencySelect = row.querySelector('.refill-frequency');
+            
+            retailCostInput.addEventListener('input', () => updateRowCalculations(row));
+            refillFrequencySelect.addEventListener('change', () => updateRowCalculations(row));
+        }
+
+        // Function to create a new medication row
+        function createMedicationRow(rowIndex) {
+            const row = document.createElement('div');
+            row.className = 'medication-row mb-4 p-4 border border-gray-100 rounded-lg bg-gray-50';
+            row.setAttribute('data-row', rowIndex);
+            
+            row.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
+                        <input type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
+                        <input type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
+                        <select class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select frequency</option>
+                            <option value="1">Every month</option>
+                            <option value="2">Every 2 months</option>
+                            <option value="3">Every 3 months</option>
+                            <option value="6">Every 6 months</option>
+                            <option value="12">Every 12 months</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Refills</label>
+                        <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold">0</div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Total</label>
+                        <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">$0.00</div>
+                    </div>
+                    <div>
+                        <button class="remove-btn bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return row;
+        }
+
+        // Add medication button event listener
+        document.getElementById('addMedicationBtn').addEventListener('click', function() {
+            const container = document.getElementById('medicationsContainer');
+            const newRow = createMedicationRow(medicationCount);
+            
+            container.appendChild(newRow);
+            addRowEventListeners(newRow);
+            
+            // Add remove button functionality
+            newRow.querySelector('.remove-btn').addEventListener('click', function() {
+                newRow.remove();
+            });
+            
+            medicationCount++;
+        });
+
+        // Calculate button event listener
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            // Validate inputs before proceeding
+            if (!validateInputs()) {
+                return; // Stop execution if validation fails
+            }
+            
+            const rows = document.querySelectorAll('.medication-row');
+            const breakdownList = document.getElementById('breakdownList');
+            const totalCostElement = document.getElementById('totalCost');
+            const costBreakdown = document.getElementById('costBreakdown');
+            
+            let grandTotal = 0;
+            let breakdownHTML = '';
+            
+            rows.forEach((row, index) => {
+                const prescriptionName = row.querySelector('.prescription-name').value || `Medication ${index + 1}`;
+                const retailCost = parseFloat(row.querySelector('.retail-cost').value) || 0;
+                const numRefills = parseInt(row.querySelector('.num-refills').textContent) || 0;
+                const rowTotal = retailCost * numRefills;
+                
+                // Only include rows with actual data
+                if (prescriptionName.trim() !== '' || retailCost > 0) {
+                    grandTotal += rowTotal;
+                    
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <div>
+                                <div class="font-medium text-gray-800">${prescriptionName}</div>
+                                <div class="text-sm text-gray-600">${formatCurrency(retailCost)} × ${numRefills} refills</div>
+                            </div>
+                            <div class="font-semibold text-gray-800">${formatCurrency(rowTotal)}</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            breakdownList.innerHTML = breakdownHTML;
+            totalCostElement.textContent = formatCurrency(grandTotal);
+            costBreakdown.classList.remove('hidden');
+            
+            // Scroll to breakdown section
+            costBreakdown.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add event listeners to the initial row
+        addRowEventListeners(document.querySelector('.medication-row'));
+
+        // Add event listener for coverage period changes
+        document.getElementById('firstCoverageMonth').addEventListener('change', calculateTotalCoverageMonths);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b0930f356b3cfd',t:'MTc1NDUwNDcwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
