@@ -7,6 +7,12 @@
     <title>Prescription Refills Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        :root {
+            --brand-navy: #075190;
+            --brand-blue: #0e76bc;
+            --brand-sky: #00aeef;
+            --brand-orange: #f18c20;
+        }
         .scrollable-container {
             max-height: 300px;
             overflow-y: auto;
@@ -27,15 +33,20 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+<body class="bg-gradient-to-br from-blue-50 to-sky-100 min-h-screen py-8 px-4">
     <div class="max-w-4xl mx-auto">
+        <!-- Page Header -->
+        <header class="bg-white rounded-lg shadow-lg p-6 mb-6 border-t-4" style="border-color: var(--brand-sky);">
+            <h1 class="text-2xl md:text-3xl font-bold leading-tight" style="color: var(--brand-navy);">New to Medicare PDP/MA-PD (Prescription Refills on a Mixed Non-30-Day Cycle)</h1>
+            <p class="text-lg md:text-xl font-semibold mt-2" style="color: var(--brand-blue);">Original PDP/MA-PD Cost Calculator</p>
+        </header>
 
         <!-- Coverage Period Section -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Coverage Period</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">First Coverage Month</label>
+                    <label for="firstCoverageMonth" class="block text-sm font-medium text-gray-700 mb-1">First Coverage Month</label>
                     <select id="firstCoverageMonth" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">Select month</option>
                         <option value="1">January</option>
@@ -54,30 +65,38 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Total Coverage Months</label>
-                    <div id="totalCoverageMonths" class="bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">0 months</div>
+                    <div id="totalCoverageMonths" class="bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold" aria-live="polite">0 months</div>
                 </div>
             </div>
         </div>
 
         <!-- Calculator Form -->
         <div class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Medication Information</h2>
+            <div class="flex items-center gap-2 mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Medication Information</h2>
+                <button id="medicationInfoTooltipBtn" type="button" class="inline-flex h-7 w-7 items-center justify-center rounded-full text-white font-bold focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--brand-blue); --tw-ring-color: var(--brand-sky);" aria-expanded="false" aria-controls="medicationInfoTooltip" aria-label="More information about Medication Information">
+                    ?
+                </button>
+            </div>
+            <div id="medicationInfoTooltip" class="hidden mb-4 rounded-lg border p-4 text-sm text-gray-800" style="background-color: #e6f7fd; border-color: var(--brand-sky);" role="status">
+                Use the medications, prices, and frequencies from the Plan Details for the beneficiary's preferred pharmacy.
+            </div>
             
             <!-- Medications Container -->
             <div id="medicationsContainer" class="scrollable-container border border-gray-200 rounded-lg p-4 mb-6">
                 <div class="medication-row mb-4 p-4 border border-gray-100 rounded-lg bg-gray-50" data-row="0">
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
-                            <input type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
+                            <label for="prescriptionName0" class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
+                            <input id="prescriptionName0" type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
-                            <input type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
+                            <label for="retailCost0" class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
+                            <input id="retailCost0" type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
-                            <select class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <label for="refillFrequency0" class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
+                            <select id="refillFrequency0" class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">Select frequency</option>
                                 <option value="1">Every month</option>
                                 <option value="2">Every 2 months</option>
@@ -88,18 +107,18 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Number of Refills</label>
-                            <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold">0</div>
+                            <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold" aria-live="polite">0</div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Total</label>
-                            <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">$0.00</div>
+                            <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold" aria-live="polite">$0.00</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Add Medication Button -->
-            <button id="addMedicationBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mb-6">
+            <button id="addMedicationBtn" class="text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mb-6 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--brand-blue); --tw-ring-color: var(--brand-sky);">
                 + Add Medication
             </button>
 
@@ -114,7 +133,7 @@
 
             <!-- Calculate Button -->
             <div class="text-center">
-                <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors duration-200 shadow-lg">
+                <button id="calculateBtn" class="text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
                     Calculate Original PDP/MA-PD Cost
                 </button>
             </div>
@@ -123,20 +142,37 @@
         <!-- Cost Breakdown Section (Initially Hidden) -->
         <div id="costBreakdown" class="bg-white rounded-lg shadow-lg p-6 mt-6 hidden">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Cost Breakdown</h2>
+            <div id="originalCostNotice" class="rounded-lg border-l-4 p-4 mb-4" style="background-color: #fff7ed; border-color: var(--brand-orange);" aria-live="polite">
+                <p class="font-semibold text-gray-800">Enter this amount in the Original PDP/MA-PD Cost field.</p>
+            </div>
             <div id="breakdownContainer" class="scrollable-container border border-gray-200 rounded-lg p-4">
                 <div id="breakdownList"></div>
-                <div class="border-t border-gray-300 pt-4 mt-4">
-                    <div class="flex justify-between items-center">
-                        <span class="text-lg font-semibold text-gray-800">Total Coverage Period Cost:</span>
-                        <span id="totalCost" class="text-xl font-bold text-blue-600">$0.00</span>
-                    </div>
-                </div>
+               <div class="border-t border-gray-300 pt-4 mt-4">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+        <span class="text-lg font-semibold text-gray-800">Total Coverage Period Cost:</span>
+        
+        <div class="text-right mt-2 md:mt-0">
+            <div id="totalCost" class="text-xl font-bold text-blue-600">$0.00</div>
+            <div class="text-sm font-medium mt-1" style="color: #f18c20;">
+                Enter this amount in the Original PDP/MA-PD Cost field.
             </div>
         </div>
+    </div>
+</div>
     </div>
 
     <script>
         let medicationCount = 1;
+
+        // Medication information tooltip
+        const medicationInfoTooltipBtn = document.getElementById('medicationInfoTooltipBtn');
+        const medicationInfoTooltip = document.getElementById('medicationInfoTooltip');
+
+        medicationInfoTooltipBtn.addEventListener('click', function() {
+            const isExpanded = medicationInfoTooltipBtn.getAttribute('aria-expanded') === 'true';
+            medicationInfoTooltipBtn.setAttribute('aria-expanded', String(!isExpanded));
+            medicationInfoTooltip.classList.toggle('hidden');
+        });
 
         // Function to format currency
         function formatCurrency(amount) {
@@ -241,16 +277,16 @@
             row.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
-                        <input type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
+                        <label for="prescriptionName${rowIndex}" class="block text-sm font-medium text-gray-700 mb-1">Prescription Name</label>
+                        <input id="prescriptionName${rowIndex}" type="text" class="prescription-name w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter medication name">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
-                        <input type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
+                        <label for="retailCost${rowIndex}" class="block text-sm font-medium text-gray-700 mb-1">Retail Cost ($)</label>
+                        <input id="retailCost${rowIndex}" type="number" class="retail-cost w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0.00" step="0.01" min="0">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
-                        <select class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <label for="refillFrequency${rowIndex}" class="block text-sm font-medium text-gray-700 mb-1">Refill Frequency</label>
+                        <select id="refillFrequency${rowIndex}" class="refill-frequency w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="">Select frequency</option>
                             <option value="1">Every month</option>
                             <option value="2">Every 2 months</option>
@@ -261,11 +297,11 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Number of Refills</label>
-                        <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold">0</div>
+                        <div class="num-refills bg-gray-50 px-3 py-2 border border-gray-200 rounded-md text-gray-800 font-semibold" aria-live="polite">0</div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Total</label>
-                        <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold">$0.00</div>
+                        <div class="row-total bg-blue-50 px-3 py-2 border border-blue-200 rounded-md text-blue-800 font-semibold" aria-live="polite">$0.00</div>
                     </div>
                     <div>
                         <button class="remove-btn bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
@@ -344,6 +380,5 @@
 
         // Add event listener for coverage period changes
         document.getElementById('firstCoverageMonth').addEventListener('change', calculateTotalCoverageMonths);
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b0930f356b3cfd',t:'MTc1NDUwNDcwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script></body>
 </html>
