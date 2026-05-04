@@ -144,6 +144,14 @@
             </div>
         </div>
 
+        <div class="text-center mt-4">
+  <button id="resetBtn"
+    class="inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+    style="border-color: var(--brand-navy); color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
+    Start Over
+  </button>
+</div>
+
         <!-- Cost Breakdown Section (Initially Hidden) -->
         <div id="costBreakdown" class="bg-white rounded-lg shadow-lg p-6 mt-6 hidden">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Cost Breakdown</h2>
@@ -382,5 +390,38 @@
 
         // Add event listener for coverage period changes
         document.getElementById('firstCoverageMonth').addEventListener('change', calculateTotalCoverageMonths);
+        document.getElementById('resetBtn').addEventListener('click', function () {
+  // Clear inputs
+  document.querySelectorAll('input').forEach(input => input.value = '');
+  document.querySelectorAll('select').forEach(select => select.value = '');
+
+  // Reset coverage display
+  document.getElementById('totalCoverageMonths').textContent = '0 months';
+
+  // Hide cost breakdown
+  document.getElementById('costBreakdown').classList.add('hidden');
+
+  // Hide validation warning if present
+  const validationWarning = document.getElementById('validationWarning');
+  if (validationWarning) {
+    validationWarning.classList.add('hidden');
+  }
+});
+// Reset medication rows (mixed calculator only)
+const container = document.getElementById('medicationsContainer');
+if (container) {
+  const rows = container.querySelectorAll('.medication-row');
+
+  rows.forEach((row, index) => {
+    if (index === 0) {
+      row.querySelectorAll('input').forEach(input => input.value = '');
+      row.querySelectorAll('select').forEach(select => select.value = '');
+      row.querySelector('.num-refills').textContent = '0';
+      row.querySelector('.row-total').textContent = '$0.00';
+    } else {
+      row.remove();
+    }
+  });
+}
     </script></body>
 </html>
