@@ -9,4 +9,4 @@ Primary developer: Schone Rubio
 
 Backup access: Brandy Bauer
 
-If technical issues occur with the deployed calculators, coordinate with IT regarding the Azure Static Web App deployment.
+
