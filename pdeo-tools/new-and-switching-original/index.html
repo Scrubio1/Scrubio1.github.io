@@ -17,7 +17,7 @@
 
 <body class="bg-gradient-to-br from-blue-50 to-sky-100 min-h-screen py-8 px-4">
   <main class="max-w-4xl mx-auto">
-    <a href="/pdeo-tools/index.html"
+    <a href="/pdeo-tools/index/"
    class="inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold border transition-colors duration-200 mb-4 focus:outline-none focus:ring-2 focus:ring-offset-2"
    style="border-color: var(--brand-navy); color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
     ← Back to Calculators
@@ -183,6 +183,13 @@
         Calculate Original PDP/MA-PD Cost
       </button>
     </div>
+<div class="text-center mt-4">
+  <button id="resetBtn"
+    class="inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+    style="border-color: var(--brand-navy); color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
+    Start Over
+  </button>
+</div>
 
     <!-- Cost Breakdown Section -->
     <section id="costBreakdown" class="bg-white rounded-lg shadow-lg p-6 mt-6 hidden">
@@ -327,6 +334,23 @@
     document.getElementById('calculateBtn').addEventListener('click', calculateOriginalCost);
 
     updateLiveCalculations();
+    document.getElementById('resetBtn').addEventListener('click', function () {
+  // Clear inputs
+  document.querySelectorAll('input').forEach(input => input.value = '');
+  document.querySelectorAll('select').forEach(select => select.value = '');
+
+  // Reset coverage display
+  document.getElementById('totalCoverageMonths').textContent = '0 months';
+
+  // Hide cost breakdown
+  document.getElementById('costBreakdown').classList.add('hidden');
+
+  // Hide validation warning if present
+  const validationWarning = document.getElementById('validationWarning');
+  if (validationWarning) {
+    validationWarning.classList.add('hidden');
+  }
+});
   </script>
 </body>
 </html>
