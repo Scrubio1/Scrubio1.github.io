@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshoot STARS Access</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-light: #f6f4f1;
+      --brand-blue-light: #00aeef;
+      --brand-blue-med: #0e76bc;
+      --brand-blue-dark: #075190;
+      --text-dark: #333333;
+      --soft-panel: #f9fbfd;
+      --soft-border: #d7e8f6;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--brand-light);
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    .page-wrapper {
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tool-card {
+      width: 100%;
+      max-width: 64rem;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(7, 81, 144, 0.15);
+      border-top: 6px solid var(--brand-blue-light);
+      padding: 24px 20px 32px;
+      text-align: center;
+    }
+
+    .logo-row {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .logo {
+      max-width: 220px;
+      height: auto;
+    }
+
+    h2 {
+      color: var(--brand-blue-dark);
+      margin: 12px 0 8px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: #4f6f94;
+    }
+
+    .decision-card {
+      background-color: var(--soft-panel);
+      border: 2px solid var(--soft-border);
+      border-radius: 16px;
+      padding: 24px 16px 28px;
+      margin: 28px auto 24px;
+      max-width: 560px;
+      box-shadow: 0 2px 6px rgba(7, 81, 144, 0.08);
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4f6f94;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+
+    .intro-text {
+      margin: 0 0 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--brand-blue-dark);
+    }
+
+    .options button,
+    #stepButtons button {
+      background-color: var(--brand-blue-med);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 12px 24px;
+      margin: 10px auto;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      width: 90%;
+      max-width: 420px;
+      display: block;
+    }
+
+    .options button:hover,
+    #stepButtons button:hover {
+      background-color: var(--brand-blue-dark);
+      box-shadow: 0 3px 8px rgba(7, 81, 144, 0.3);
+    }
+
+    button:focus {
+      outline: 3px solid var(--brand-blue-dark);
+      outline-offset: 3px;
+    }
+
+    #stepQuestion {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 18px;
+      color: var(--brand-blue-dark);
+    }
+
+    #stepInstruction {
+      margin: 18px auto 0;
+      font-weight: 600;
+      color: var(--brand-blue-dark);
+      font-size: 16px;
+      max-width: 520px;
+      line-height: 1.5;
+    }
+
+    .secondary-button {
+      background-color: #ffffff;
+      color: var(--brand-blue-dark);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 20px;
+      margin: 18px auto 0;
+      border: 2px solid var(--brand-blue-dark);
+      border-radius: 999px;
+      cursor: pointer;
+      display: block;
+      width: 90%;
+      max-width: 260px;
+    }
+
+    .secondary-button:hover {
+      background-color: var(--brand-light);
+    }
+
+    .note {
+      margin: 24px auto 0;
+      font-size: 13px;
+      color: var(--brand-blue-dark);
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    .note span {
+      color: var(--brand-blue-dark);
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #d6d6d6;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--text-dark);
+      text-align: left;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="tool-card">
+      <div class="logo-row">
+        <img src="../images/SHIPTAClogo.png" alt="SHIP Technical Assistance Center logo" class="logo">
+      </div>
+
+      <h2>Troubleshoot STARS Access</h2>
+      <p class="subtitle">Quick help for common login and access problems</p>
+
+      <div class="decision-card">
+        <div id="intro">
+          <p class="section-label">Start here</p>
+
+          <p id="introQuestion" class="intro-text">
+            What seems to be causing the problem with STARS access?
+          </p>
+
+          <div class="options" id="categoryChoices">
+            <button type="button" data-category="username">Username</button>
+            <button type="button" data-category="password">Password</button>
+            <button type="button" data-category="account">Account Lockout</button>
+            <button type="button" data-category="mfa">Multifactor Authentication (MFA)</button>
+            <button type="button" data-category="unknown">I Don't Know</button>
+          </div>
+        </div>
+
+        <div id="steps" class="hidden">
+          <p id="stepQuestion" tabindex="-1" aria-live="polite"></p>
+          <div id="stepButtons"></div>
+          <p id="stepInstruction" aria-live="polite"></p>
+        </div>
+
+        <button type="button" id="startOverBtn" class="secondary-button hidden">
+          Start Over
+        </button>
+      </div>
+
+      <p class="note">
+        This tool is a quick guide. Always follow your program’s policies and ask your supervisor if you are unsure.
+        <span>SHIP TA staff cannot reset STARS passwords or unlock accounts.</span>
+      </p>
+
+      <p class="disclaimer">
+        This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $1,500,000 with 100% funding by ACL/HHS.  The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. government.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const helpDeskContact = "Contact the ResolveSoft STARS Help Desk at ResolveSoftSTARSHelpDesk@resolvesoft.com or (703) 594-1589.";
+
+    const flows = {
+      username: {
+        start: {
+          q: "Can you see an email with your STARS username from DoNotReplyACLSystems@micropact.com?",
+          yes: "capitalization",
+          no: "emailCheck"
+        },
+        emailCheck: {
+          q: "Check your spam/junk folder. If you still do not see a username email, ask your supervisor to confirm that your email address is entered correctly on your Team Member form.",
+          end: "Your supervisor may ask you to contact the ResolveSoft STARS Help Desk if the email address needs to be corrected or added in STARS. " + helpDeskContact
+        },
+        capitalization: {
+          q: "Are you entering your username exactly as shown in the email? Usernames are case sensitive, such as Firstname.Lastname.",
+          yes: "typoCheck",
+          no: "formatReminder"
+        },
+        formatReminder: {
+          q: "Re-enter your username in this format: Firstname.Lastname, matching uppercase and lowercase exactly.",
+          end: "Try logging in again with the corrected username."
+        },
+        typoCheck: {
+          q: "Do you see a typo in your name in the username email?",
+          yes: "nameTypo",
+          no: "contactHelpDesk"
+        },
+        nameTypo: {
+          q: "Contact your supervisor or the person who created your Team Member form so they can correct your information.",
+          end: "Your Team Member form may need to be deleted and recreated so your username is accurate."
+        },
+        contactHelpDesk: {
+          q: "If your username looks correct and you still cannot log in, contact the ResolveSoft STARS Help Desk for assistance.",
+          end: "Have your program name and any error messages ready when you contact them. " + helpDeskContact
+        }
+      },
+
+      password: {
+        start: {
+          q: "Are you seeing a message that your password is incorrect or you cannot remember it?",
+          yes: "reset",
+          no: "expiredCheck"
+        },
+        reset: {
+          q: "Click the Forgot Username or Password link on the STARS login page and follow the prompts.",
+          end: "Watch for the reset email and complete the steps as soon as possible. Remember, passwords are case sensitive."
+        },
+        expiredCheck: {
+          q: "Did you receive an onscreen message that your password has expired?",
+          yes: "changeExpired",
+          no: "passwordLocked"
+        },
+        changeExpired: {
+          q: "Follow the onscreen instructions to create a new password that meets the STARS requirements.",
+          end: "After changing your password, log in again with your new password."
+        },
+        passwordLocked: {
+          q: "Have you tried several times and now see a message that your account is locked because of failed login attempts?",
+          yes: "contactHelpDesk",
+          no: "contactHelpDesk"
+        },
+        contactHelpDesk: {
+          q: "Your account may be locked due to repeated failed password attempts.",
+          end: "Contact the ResolveSoft STARS Help Desk for assistance. In the future, take care when entering your password. After three unsuccessful attempts, your account can be locked. " + helpDeskContact
+        }
+      },
+
+      account: {
+        start: {
+          q: "Does the message say your account is locked because of failed login attempts?",
+          yes: "failedAttempts",
+          no: "inactiveCheck"
+        },
+        failedAttempts: {
+          q: "Your account is locked due to unsuccessful login attempts.",
+          end: "Contact the ResolveSoft STARS Help Desk for help unlocking your account. " + helpDeskContact
+        },
+        inactiveCheck: {
+          q: "Does the message mention the 120-Day Inactivity Rule or say your account is inactive?",
+          yes: "inactivity",
+          no: "unsureLock"
+        },
+        inactivity: {
+          q: "Your account is locked because of the 120-Day Inactivity Rule.",
+          end: "Contact your supervisor or another leader within your program to request that your account be unlocked. The SHIP TA Center and ResolveSoft STARS Help Desk cannot unlock accounts that were automatically inactivated."
+        },
+        unsureLock: {
+          q: "If you are not sure why your account is locked, start with your supervisor.",
+          end: "Your supervisor can confirm whether this is a 120-day inactivity issue or direct you to the ResolveSoft STARS Help Desk if needed. " + helpDeskContact
+        }
+      },
+
+      mfa: {
+        start: {
+          q: "Has it been at least 1–2 minutes since you requested the MFA verification code?",
+          yes: "received",
+          no: "waitMore"
+        },
+        waitMore: {
+          q: "Wait at least 1–2 minutes before requesting a new code.",
+          end: "If the email still does not arrive after waiting, check your spam or junk folder, then talk with your supervisor to confirm that your email address in STARS is correct."
+        },
+        received: {
+          q: "Did you receive the ACL SIRS/STARS Login Verification email?",
+          yes: "expired",
+          no: "spamCheck"
+        },
+        spamCheck: {
+          q: "Did you check your spam/junk folder for the verification code email?",
+          yes: "confirmEmail",
+          no: "checkSpam"
+        },
+        checkSpam: {
+          q: "Check your spam/junk folder for an email from DoNotReplyACLSystems@micropact.com.",
+          end: "If you still cannot find it, confirm your email address on file with your supervisor."
+        },
+        confirmEmail: {
+          q: "Ask your supervisor to confirm that the email address on your Team Member form is correct.",
+          end: "Once your email is correct in STARS, request a new MFA code and try again."
+        },
+        expired: {
+          q: "Has more than 15 minutes passed since the code was sent, or did you enter the code incorrectly several times?",
+          yes: "newCode",
+          no: "threeTries"
+        },
+        newCode: {
+          q: "Your MFA code has expired or is no longer valid.",
+          end: "Log in again to request a new MFA code, then enter the new code within 15 minutes."
+        },
+        threeTries: {
+          q: "STARS allows 3 invalid attempts to enter the MFA code.",
+          end: "If you reach 3 invalid attempts, the code will no longer work. Log in again to receive a new code."
+        }
+      },
+
+      unknown: {
+        start: {
+          q: "Let’s narrow it down. Are you having trouble entering your username?",
+          yes: "goUsername",
+          no: "askPassword"
+        },
+        goUsername: {
+          q: "",
+          branch: "username"
+        },
+        askPassword: {
+          q: "Are you having trouble with your password?",
+          yes: "goPassword",
+          no: "askAccount"
+        },
+        goPassword: {
+          q: "",
+          branch: "password"
+        },
+        askAccount: {
+          q: "Are you locked out of your account?",
+          yes: "goAccount",
+          no: "askMFA"
+        },
+        goAccount: {
+          q: "",
+          branch: "account"
+        },
+        askMFA: {
+          q: "Are you having trouble with the MFA verification code?",
+          yes: "goMFA",
+          no: "contact"
+        },
+        goMFA: {
+          q: "",
+          branch: "mfa"
+        },
+        contact: {
+          q: "If you still are not sure what is wrong, start by talking with your supervisor.",
+          end: "Your supervisor can help you decide whether to contact the ResolveSoft STARS Help Desk or the SHIP TA Center. " + helpDeskContact
+        }
+      }
+    };
+
+    let currentCategory = "";
+    let currentStepKey = "";
+
+    const introDiv = document.getElementById("intro");
+    const stepsDiv = document.getElementById("steps");
+    const stepQuestionEl = document.getElementById("stepQuestion");
+    const stepButtonsEl = document.getElementById("stepButtons");
+    const stepInstructionEl = document.getElementById("stepInstruction");
+    const startOverBtn = document.getElementById("startOverBtn");
+
+    document.getElementById("categoryChoices").addEventListener("click", function (e) {
+      const button = e.target.closest("button[data-category]");
+      if (!button) return;
+
+      chooseCategory(button.getAttribute("data-category"));
+    });
+
+    startOverBtn.addEventListener("click", resetTool);
+
+    function chooseCategory(cat) {
+      currentCategory = cat;
+      currentStepKey = "start";
+      introDiv.classList.add("hidden");
+      stepsDiv.classList.remove("hidden");
+      startOverBtn.classList.remove("hidden");
+      showStep();
+    }
+
+    function showStep() {
+      const categoryFlow = flows[currentCategory];
+
+      if (!categoryFlow) {
+        showError("Something went wrong. Please start over or contact your supervisor.");
+        return;
+      }
+
+      const step = categoryFlow[currentStepKey];
+
+      if (!step) {
+        showError("Something went wrong. Please start over or contact your supervisor.");
+        return;
+      }
+
+      if (step.branch) {
+        currentCategory = step.branch;
+        currentStepKey = "start";
+        showStep();
+        return;
+      }
+
+      stepQuestionEl.textContent = step.q;
+      stepInstructionEl.textContent = "";
+      stepButtonsEl.innerHTML = "";
+
+      stepQuestionEl.focus();
+
+      if (step.end) {
+        stepInstructionEl.textContent = step.end;
+        return;
+      }
+
+      const yesBtn = document.createElement("button");
+      yesBtn.type = "button";
+      yesBtn.textContent = "Yes";
+      yesBtn.addEventListener("click", function () {
+        goNext("yes");
+      });
+
+      const noBtn = document.createElement("button");
+      noBtn.type = "button";
+      noBtn.textContent = "No";
+      noBtn.addEventListener("click", function () {
+        goNext("no");
+      });
+
+      stepButtonsEl.appendChild(yesBtn);
+      stepButtonsEl.appendChild(noBtn);
+    }
+
+    function goNext(answerKey) {
+      const categoryFlow = flows[currentCategory];
+      const step = categoryFlow[currentStepKey];
+      const nextKey = step[answerKey];
+
+      if (!nextKey) {
+        showError("No next step is defined for this answer. Please start over or contact your supervisor.");
+        return;
+      }
+
+      currentStepKey = nextKey;
+      showStep();
+    }
+
+    function showError(message) {
+      stepQuestionEl.textContent = "Oops – this step is not configured correctly.";
+      stepInstructionEl.textContent = message;
+      stepButtonsEl.innerHTML = "";
+      startOverBtn.classList.remove("hidden");
+      stepQuestionEl.focus();
+    }
+
+    function resetTool() {
+      currentCategory = "";
+      currentStepKey = "";
+      stepsDiv.classList.add("hidden");
+      introDiv.classList.remove("hidden");
+      startOverBtn.classList.add("hidden");
+      stepQuestionEl.textContent = "";
+      stepInstructionEl.textContent = "";
+      stepButtonsEl.innerHTML = "";
+
+      const firstCategoryButton = document.querySelector("#categoryChoices button");
+      if (firstCategoryButton) {
+        firstCategoryButton.focus();
+      }
+    }
+  </script>
+</body>
+</html>
