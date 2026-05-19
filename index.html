@@ -1,122 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDEO Cost Calculators</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --brand-navy: #075190;
-            --brand-blue: #0e76bc;
-            --brand-sky: #00aeef;
-            --brand-orange: #f18c20;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIP Interactive User Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand-blue: #075190;
+      --brand-orange: #f18c20;
+      --card-bg: #f3f8fd;
+      --page-bg: #fffefa;
+      --text-main: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand-blue);
+      font-size: clamp(2rem, 5vw, 4.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 2px 2px 0 var(--brand-orange);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      align-items: stretch;
+      margin-bottom: 2.5rem;
+    }
+
+    .tool-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card-bg);
+      min-height: 500px;
+      padding: 1.75rem 2rem 4rem;
+      border-right: 5px solid var(--brand-blue);
+      border-bottom: 5px solid var(--brand-blue);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .tool-card:hover,
+    .tool-card:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(7, 81, 144, 0.18);
+      outline: none;
+    }
+
+    .tool-card:focus-visible {
+      outline: 4px solid var(--brand-orange);
+      outline-offset: 6px;
+    }
+
+    .tool-icon {
+      width: min(100%, 300px);
+      height: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .tool-card h2 {
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      font-weight: 800;
+    }
+
+    .tool-card p {
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      line-height: 1.5;
+      margin: 0;
+      max-width: 34ch;
+    }
+
+    .arrow-button {
+      position: absolute;
+      bottom: -2rem;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+
+    footer {
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .footer-logo {
+      width: 170px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .disclaimer {
+      margin: 0;
+    }
+
+    @media (max-width: 1050px) {
+      .tools-grid {
+        gap: 2rem;
+      }
+
+      .tool-card {
+        min-height: 500px;
+        padding: 1.5rem 1.5rem 4rem;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      header {
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+        text-shadow: none;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+        margin-bottom: 3rem;
+      }
+
+      .tool-card {
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 120px 1fr 56px;
+        gap: 1rem;
+        align-items: center;
+        text-align: left;
+        padding: 1.5rem 1rem;
+        border-right: 4px solid var(--brand-blue);
+        border-bottom: 4px solid var(--brand-blue);
+      }
+
+      .tool-icon {
+        width: 120px;
+        margin: 0;
+      }
+
+      .tool-card h2 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .tool-card p {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        max-width: none;
+      }
+
+      .arrow-button {
+        position: static;
+        width: 56px;
+        height: 56px;
+        align-self: end;
+        justify-self: center;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: left;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .footer-logo {
+        width: 160px;
+      }
+
+      .disclaimer {
+        font-size: 0.65rem;
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .tool-card {
+        grid-template-columns: 112px 1fr 52px;
+        gap: 0.75rem;
+      }
+
+      .tool-icon {
+        width: 112px;
+      }
+
+      .arrow-button {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-sky-100 min-h-screen py-8 px-4">
-    <main class="max-w-5xl mx-auto">
-    <div class="mb-4">
-  <img src="images/SHIPTAClogo.png"
-       alt="SHIP Technical Assistance Center"
-       class="h-12 md:h-14 object-contain">
-</div>
-        <!-- Page Header -->
-        <header class="bg-white rounded-lg shadow-lg p-6 mb-6 border-t-4" style="border-color: var(--brand-sky);">
-            <h1 class="text-2xl md:text-3xl font-bold leading-tight" style="color: var(--brand-navy);">
-                PDEO Original PDP/MA-PD Cost Calculators
-            </h1>
-            <p class="text-lg md:text-xl font-semibold mt-2" style="color: var(--brand-blue);">
-                Select the calculator that matches the beneficiary’s enrollment scenario and prescription refill schedule.
-            </p>
-        </header>
 
-        <!-- New to Medicare PDP/MA-PD Group -->
-        <section class="bg-white rounded-lg shadow-lg p-6 mb-6 border-t-4" style="border-color: var(--brand-sky);">
-            <div class="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-2 mb-4">
-                <h2 class="text-2xl md:text-3xl font-bold leading-tight" style="color: var(--brand-navy);">
-                    New to Medicare PDP/MA-PD
-                </h2>
-                <p class="text-lg md:text-xl font-semibold" style="color: var(--brand-blue);">
-                    Original PDP/MA-PD Cost Calculators
-                </p>
-            </div>
+<body>
+  <main class="page">
+    <header>
+      <h1>SHIP Interactive User Tools</h1>
+    </header>
 
-            <div class="mb-6">
-                <h3 class="text-sm font-bold uppercase tracking-wide text-gray-700 mb-3">
-                    The enrollment scenario applies when
-                </h3>
-                <ul class="list-disc ml-6 space-y-2 text-gray-800 leading-relaxed">
-                    <li>The person has no previous PDP/MA-PD coverage,</li>
-                    <li>Has previous non-Medicare drug coverage, or</li>
-                    <li>A beneficiary’s plan is no longer available on the MPF due to plan termination, sanction, or moving to a new area/state.</li>
-                </ul>
-            </div>
+    <section class="tools-grid" aria-label="Available SHIP interactive user tools">
+      <a class="tool-card" href="pdeo-tools/">
+        <img
+          class="tool-icon"
+          src="images/pdeo-calc-icon.svg"
+          alt="Illustration of a calculator, document, and magnifying glass representing PDEO cost calculation and plan review tools."
+        />
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <!-- Consistent Schedule Card -->
-                <article class="rounded-lg border bg-white p-5 shadow-sm flex flex-col" style="border-color: #bfdbfe;">
-                    <h3 class="text-lg font-bold leading-snug mb-3" style="color: var(--brand-navy);">
-                        Prescriptions on a Consistent Non-30-Day Refill Schedule
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed mb-5 flex-grow">
-                        Use this calculator when prescriptions are refilled on the same non-30-day schedule.
-                    </p>
-                    <a href="/pdeo-tools/new-consistent-schedule-calculator/" class="inline-flex justify-center rounded-md px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
-                        Open Consistent Schedule Calculator
-                    </a>
-                </article>
+        <div>
+          <h2>PDEO Calculators</h2>
+          <p>Simple online calculators for finding PDP/MA-PD costs for several PDEO scenarios.</p>
+        </div>
 
-                <!-- Mixed Schedule Card -->
-                <article class="rounded-lg border bg-white p-5 shadow-sm flex flex-col" style="border-color: #bfdbfe;">
-                    <h3 class="text-lg font-bold leading-snug mb-3" style="color: var(--brand-navy);">
-                        Prescriptions on a Mixed Non-30-Day Refill Schedule
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed mb-5 flex-grow">
-                        Use this calculator when prescriptions have different refill schedules.
-                    </p>
-                    <a href="/pdeo-tools/new-mixed-schedule-calculator/" class="inline-flex justify-center rounded-md px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
-                        Open Mixed Schedule Calculator
-                    </a>
-                </article>
-            </div>
-        </section>
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
 
-        <!-- Combined Scenario Group -->
-        <section class="bg-white rounded-lg shadow-lg p-6 border-t-4" style="border-color: var(--brand-orange);">
-            <div class="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-2 mb-4">
-                <h2 class="text-2xl font-bold leading-tight" style="color: var(--brand-navy);">
-                    New to Medicare PDP/MA-PD (this year) and Switching PDP/MA-PD (next year)
-                </h2>
-                <p class="text-lg font-semibold" style="color: var(--brand-blue);">
-                    Original PDP/MA-PD Cost Calculator
-                </p>
-            </div>
+      <a class="tool-card" href="troubleshooter/">
+        <img
+          class="tool-icon"
+          src="images/stars-troubleshooter-icon.svg"
+          alt="Illustration of a user account profile with a wrench representing STARS login, access, and account troubleshooting tools."
+        />
 
-            <div class="rounded-lg border p-5" style="background-color: #fff7ed; border-color: #fed7aa;">
-         <h3 class="text-sm font-bold uppercase tracking-wide text-gray-700 mb-3">
-    The Enrollment Scenario Applies When
-</h3>
+        <div>
+          <h2>STARS Login Troubleshooter</h2>
+          <p>A straight-forward guide to identify and learn to resolve common STARS login and access issues.</p>
+        </div>
 
-<p class="text-gray-800 leading-relaxed mb-4">
-    During OEP, you may assist beneficiaries who are new to Medicare PDP/MA-PD (see the New to Medicare PDP/MA-PD section above for qualifications) and choose to switch to a different PDP/MA-PD with coverage beginning in the upcoming year.
-</p>
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
 
-<p class="text-gray-800 leading-relaxed mb-4">
-    <strong>Prescriptions on a 30-Day Refill Schedule.</strong>
-</p>
+      <a class="tool-card" href="user-roles-explorer/">
+        <img
+          class="tool-icon"
+          src="images/user-roles-explorer-icon.svg"
+          alt="Illustration of a user profile connected to multiple users with a gear icon representing STARS user roles, permissions, and hierarchy tools."
+        />
 
-<p class="text-gray-700 leading-relaxed mb-5 flex-grow">
-    Use this calculator when all prescriptions are refilled on a 30-day schedule.
-</p>
+        <div>
+          <h2>STARS User Role Explorer</h2>
+          <p>An interactive reference showing each STARS user role’s capabilities in the data system.</p>
+        </div>
 
-<a href="/pdeo-tools/new-and-switching-original/"
-   class="inline-flex justify-center rounded-md px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
-   style="background-color: var(--brand-navy); --tw-ring-color: var(--brand-sky);">
-    Open New & Switching 30-Day Calculator
-</a>
-            </div>
-        </section>
-    </main>
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
+    </section>
+
+    <footer>
+      <img
+        class="footer-logo"
+        src="images/SHIPTAClogo.png"
+        alt="State Health Insurance Assistance Program (SHIP) Technical Assistance Center logo"
+      />
+
+      <p class="disclaimer">
+        This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $1,500,000 with 100% funding by ACL/HHS. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. government.
+      </p>
+    </footer>
+  </main>
 </body>
 </html>
