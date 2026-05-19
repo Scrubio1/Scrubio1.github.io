@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIP Interactive User Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand-blue: #075190;
+      --brand-orange: #f18c20;
+      --card-bg: #f3f8fd;
+      --page-bg: #fffefa;
+      --text-main: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand-blue);
+      font-size: clamp(2rem, 5vw, 4.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 2px 2px 0 var(--brand-orange);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      align-items: stretch;
+      margin-bottom: 2.5rem;
+    }
+
+    .tool-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card-bg);
+      min-height: 500px;
+      padding: 1.75rem 2rem 4rem;
+      border-right: 5px solid var(--brand-blue);
+      border-bottom: 5px solid var(--brand-blue);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .tool-card:hover,
+    .tool-card:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(7, 81, 144, 0.18);
+      outline: none;
+    }
+
+    .tool-card:focus-visible {
+      outline: 4px solid var(--brand-orange);
+      outline-offset: 6px;
+    }
+
+    .tool-icon {
+      width: min(100%, 300px);
+      height: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .tool-card h2 {
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      font-weight: 800;
+    }
+
+    .tool-card p {
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      line-height: 1.5;
+      margin: 0;
+      max-width: 34ch;
+    }
+
+    .arrow-button {
+      position: absolute;
+      bottom: -2rem;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+
+    footer {
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .footer-logo {
+      width: 170px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .disclaimer {
+      margin: 0;
+    }
+
+    @media (max-width: 1050px) {
+      .tools-grid {
+        gap: 2rem;
+      }
+
+      .tool-card {
+        min-height: 500px;
+        padding: 1.5rem 1.5rem 4rem;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      header {
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+        text-shadow: none;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+        margin-bottom: 3rem;
+      }
+
+      .tool-card {
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 120px 1fr 56px;
+        gap: 1rem;
+        align-items: center;
+        text-align: left;
+        padding: 1.5rem 1rem;
+        border-right: 4px solid var(--brand-blue);
+        border-bottom: 4px solid var(--brand-blue);
+      }
+
+      .tool-icon {
+        width: 120px;
+        margin: 0;
+      }
+
+      .tool-card h2 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .tool-card p {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        max-width: none;
+      }
+
+      .arrow-button {
+        position: static;
+        width: 56px;
+        height: 56px;
+        align-self: end;
+        justify-self: center;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: left;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .footer-logo {
+        width: 160px;
+      }
+
+      .disclaimer {
+        font-size: 0.65rem;
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .tool-card {
+        grid-template-columns: 112px 1fr 52px;
+        gap: 0.75rem;
+      }
+
+      .tool-icon {
+        width: 112px;
+      }
+
+      .arrow-button {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <h1>SHIP Interactive User Tools</h1>
+    </header>
+
+    <section class="tools-grid" aria-label="Available SHIP interactive user tools">
+      <a class="tool-card" href="pdeo-tools/">
+        <img
+          class="tool-icon"
+          src="images/pdeo-calc-icon.svg"
+          alt="Illustration of a calculator, document, and magnifying glass representing PDEO cost calculation and plan review tools."
+        />
+
+        <div>
+          <h2>PDEO Calculators</h2>
+          <p>Simple online calculators for finding PDP/MA-PD costs for several PDEO scenarios.</p>
+        </div>
+
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
+
+      <a class="tool-card" href="troubleshooter/">
+        <img
+          class="tool-icon"
+          src="images/stars-troubleshooter-icon.svg"
+          alt="Illustration of a user account profile with a wrench representing STARS login, access, and account troubleshooting tools."
+        />
+
+        <div>
+          <h2>STARS Login Troubleshooter</h2>
+          <p>A straight-forward guide to identify and learn to resolve common STARS login and access issues.</p>
+        </div>
+
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
+
+      <a class="tool-card" href="user-roles-explorer/">
+        <img
+          class="tool-icon"
+          src="images/user-roles-explorer-icon.svg"
+          alt="Illustration of a user profile connected to multiple users with a gear icon representing STARS user roles, permissions, and hierarchy tools."
+        />
+
+        <div>
+          <h2>STARS User Role Explorer</h2>
+          <p>An interactive reference showing each STARS user role’s capabilities in the data system.</p>
+        </div>
+
+        <img
+          class="arrow-button"
+          src="images/white-arrow-in-orange-circle.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
+    </section>
+
+    <footer>
+      <img
+        class="footer-logo"
+        src="images/SHIPTAClogo.png"
+        alt="State Health Insurance Assistance Program (SHIP) Technical Assistance Center logo"
+      />
+
+      <p class="disclaimer">
+        This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $1,500,000 with 100% funding by ACL/HHS. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. government.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
