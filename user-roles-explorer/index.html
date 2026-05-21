@@ -333,9 +333,10 @@
     const roleData = {
       "SHIP Director": {
         can: [
-          "Create, edit, and view all forms",
+          "Create, edit, and view all STARS forms",
+          "View their own CMS Unique ID number on their Team Member Form", 
           "Manage CMS Unique IDs for others",
-          "Access all Configuration menu reports",
+          "Access all reports in the Configuration menu",
           "Search all data in STARS",
           "Delete data"
         ],
@@ -349,14 +350,16 @@
 
       "Assistant Director": {
         can: [
-          "Create, edit, and view all forms except creating peers or higher",
+          "Create, edit, and view most forms at the Assistant Director level and below it",
+          "View their own CMS Unique ID number on their Team Member Form",
           "Manage CMS Unique IDs for others",
-          "Use all Configuration reports",
-          "Search all data in STARS"
+          "Use all reports in the Configuration menu", 
+          "Search all data in STARS",
+          "Delete data"
         ],
         cannot: [
-          "Create another Assistant Director",
-          "Edit restricted fields on their own Team Member Form",
+          "Create other users at the Assistant Director level or higher",
+          "Edit certain fields on their own Team Member Form",
           "Manage their own CMS Unique ID"
         ],
         menu: { search: true, reporting: true, config: true }
@@ -364,15 +367,16 @@
 
       "State Staff": {
         can: [
-          "Create, edit, and view forms except peers and higher roles",
-          "Add and edit Activity Forms for all team members",
-          "Search all data",
-          "Use most Configuration menu reports"
+          "Create, edit, and view most forms at the State level and below it",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search all data in STARS",
+          "Use all reports in the Configuration menu, except the CMS Unique ID Report"
         ],
         cannot: [
-          "Create State Staff or higher",
-          "Manage CMS Unique IDs",
-          "Access CMS Unique ID Report",
+          "Create other users at the State Staff level or higher",
+          "Edit certain fields on their own Team Member Form",
+          "Manage or view CMS Unique IDs for others",
+          "Access the CMS Unique ID Report",
           "Delete data"
         ],
         menu: { search: true, reporting: true, config: true }
@@ -380,14 +384,16 @@
 
       "Sub-State Manager": {
         can: [
-          "Create, edit, and view Sub-State and Site-level forms",
-          "Use Configuration menu at Sub-State/Site level",
-          "Search all Sub-State and Site data"
+          "Create, edit, and view most forms at the Sub-State level and Sites below it",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search data at the Sub-State level and Sites below it",
+          "Use all reports in the Configuration menu at the Sub-State and Site levels, except the CMS Unique ID Report"
         ],
         cannot: [
-          "Create Sub-State Manager or higher",
+          "Create other users at the Sub-State Manager level or higher",
+          "Edit certain fields on their own Team Member Form",
           "Manage or view CMS Unique IDs for others",
-          "Access CMS Unique ID Report",
+          "Access the CMS Unique ID Report",
           "Delete data"
         ],
         menu: { search: true, reporting: true, config: true }
@@ -395,14 +401,18 @@
 
       "Sub-State Staff": {
         can: [
-          "Create, edit, and view Sub-State and Site forms",
-          "Search Sub-State and Site data"
+          "Create, edit, and view most forms at the Sub-State level and Sites below it",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search data at the Sub-State level and Sites below it",
+          "Use all reports in the Configuration menu at the Sub-State and Site levels, except the CMS Unique ID Report"
         ],
         cannot: [
+          "Create other users at the Sub-State Staff level or higher",
           "Create or edit Team Member Forms",
-          "Access Configuration reports",
-          "View CMS Unique IDs",
-          "Create Training Forms",
+          "Edit certain fields on their own Team Member Form",
+          "Manage or view CMS Unique IDs for others",
+          "Create Training Forms (read-only)",
+          "Access the CMS Unique ID Report",
           "Delete data"
         ],
         menu: { search: true, reporting: true, config: false }
@@ -410,14 +420,16 @@
 
       "Site Manager": {
         can: [
-          "Create, edit, and view Site-level forms",
-          "Search all data at their Site",
-          "Use Configuration menu at Site level"
+          "Create, edit, and view most forms at the Site level",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search data at the Site level",
+          "Use all reports in the Configuration menu at the Site level, except the CMS Unique ID Report"
         ],
         cannot: [
-          "Create Site Manager or higher",
-          "Manage CMS Unique IDs",
-          "Access CMS Unique ID Report",
+          "Create other users at the Site Manager level or higher",
+          "Edit certain fields on their own Team Member Form",
+          "Manage or view CMS Unique IDs for others",
+          "Access the CMS Unique ID Report",
           "Delete data"
         ],
         menu: { search: true, reporting: true, config: true }
@@ -425,13 +437,15 @@
 
       "Site Staff": {
         can: [
-          "Create, edit, and view Site-level forms",
-          "Search Site-level data"
+          "Create, edit, and view most forms at the Site level",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search data at the Site level",      
         ],
         cannot: [
-          "Edit or create Team Member Forms",
-          "Access Configuration reports",
-          "View CMS Unique IDs",
+          "Create or edit Team Member Forms",
+          "Manage or view CMS Unique IDs for others",
+          "Create Training Forms (read-only)",
+          "Access Configuration menu reports",
           "Delete data"
         ],
         menu: { search: true, reporting: true, config: false }
@@ -439,15 +453,18 @@
 
       "Team Member": {
         can: [
-          "Create and edit forms about their own efforts",
-          "Search and view forms they created",
+          "Create and edit most forms about their own efforts",
+          "Create and edit most forms about others' efforts at or below their level",
+          "Create and edit Activity Forms linked to their own Team Member Form",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search and view forms most they created or were created by others at or below their level",
           "Use Standard and Advanced Search"
         ],
         cannot: [
           "Edit their own Team Member Form",
-          "Create or view others' Team Member Forms",
-          "Access Reporting",
-          "Access Configuration",
+          "Create, edit or view others' Team Member Forms",
+          "Create Beneficiary Additional Sessions forms or add additional team members to forms created by others",
+          "Access Configuration menu reports",
           "Delete data"
         ],
         menu: { search: true, reporting: false, config: false }
@@ -455,14 +472,19 @@
 
       "STARS Submitter": {
         can: [
-          "Create and edit forms about their own efforts",
+          "Create and edit most forms about their own efforts",
+          "Create and edit most forms about others' efforts at or below their level",
+          "Create and edit Activity Forms linked to their own Team Member Form",
+          "View their own CMS Unique ID number on their Team Member Form, if applicable",
+          "Search and view forms most they created or were created by others at or below their level",
           "Use Standard Search"
         ],
         cannot: [
           "Use Advanced Search",
-          "Edit Team Member Forms",
-          "Access Reporting",
-          "Access Configuration",
+          "Edit their own Team Member Form",
+          "Create, edit or view others' Team Member Forms",
+          "Create Beneficiary Additional Sessions forms or add additional team members to forms created by others",
+          "Access Configuration reports",
           "Delete data"
         ],
         menu: { search: true, reporting: false, config: false }
