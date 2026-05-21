@@ -38,8 +38,8 @@ for the New and Switching calculator.
 - May help reduce user mistakes or invalid scenario use.
 
 #### Status
-- Consider for future revision/testing.
-- Not currently identified as a major usability issue.
+- Implemented May 2026.
+- Dropdown options were updated to limit selection to November and December.
 
 ---
 
