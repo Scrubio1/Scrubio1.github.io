@@ -341,22 +341,27 @@
     document.getElementById('calculateBtn').addEventListener('click', calculateOriginalCost);
 
     updateLiveCalculations();
-    document.getElementById('resetBtn').addEventListener('click', function () {
+document.getElementById('resetBtn').addEventListener('click', function () {
+
   // Clear inputs
   document.querySelectorAll('input').forEach(input => input.value = '');
   document.querySelectorAll('select').forEach(select => select.value = '');
 
-  // Reset coverage display
-  document.getElementById('totalCoverageMonths').textContent = '0 months';
+  // Reset all calculated displays
+  updateLiveCalculations();
+
+  // Reset breakdown values
+  document.getElementById('breakdownCurrentYearResult').textContent = '$0.00';
+  document.getElementById('breakdownNextYearCost').textContent = '$0.00';
+  document.getElementById('originalCost').textContent = '$0.00';
 
   // Hide cost breakdown
-  document.getElementById('costBreakdown').classList.add('hidden');
+  costBreakdown.classList.add('hidden');
 
-  // Hide validation warning if present
-  const validationWarning = document.getElementById('validationWarning');
-  if (validationWarning) {
-    validationWarning.classList.add('hidden');
-  }
+  // Hide validation warning
+  validationList.innerHTML = '';
+  validationWarning.classList.add('hidden');
+
 });
   </script>
   <!-- Disclaimer -->
