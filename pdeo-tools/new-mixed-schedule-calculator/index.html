@@ -406,40 +406,47 @@
         addRowEventListeners(document.querySelector('.medication-row'));
 
         // Add event listener for coverage period changes
-        document.getElementById('firstCoverageMonth').addEventListener('change', calculateTotalCoverageMonths);
-        document.getElementById('resetBtn').addEventListener('click', function () {
-  // Clear inputs
-  document.querySelectorAll('input').forEach(input => input.value = '');
-  document.querySelectorAll('select').forEach(select => select.value = '');
+                document.getElementById('firstCoverageMonth').addEventListener('change', calculateTotalCoverageMonths);
+                document.getElementById('resetBtn').addEventListener('click', function () {
+                        // Clear all inputs and selects
+                        document.querySelectorAll('input').forEach(input => input.value = '');
+                        document.querySelectorAll('select').forEach(select => select.value = '');
 
-  // Reset coverage display
-  document.getElementById('totalCoverageMonths').textContent = '0 months';
+                        // Reset coverage display
+                        document.getElementById('totalCoverageMonths').textContent = '0 months';
 
-  // Hide cost breakdown
-  document.getElementById('costBreakdown').classList.add('hidden');
+                        // Hide cost breakdown
+                        document.getElementById('costBreakdown').classList.add('hidden');
 
-  // Hide validation warning if present
-  const validationWarning = document.getElementById('validationWarning');
-  if (validationWarning) {
-    validationWarning.classList.add('hidden');
-  }
-});
-// Reset medication rows (mixed calculator only)
-const container = document.getElementById('medicationsContainer');
-if (container) {
-  const rows = container.querySelectorAll('.medication-row');
+                        // Hide validation warning
+                        const validationWarning = document.getElementById('validationWarning');
+                        if (validationWarning) {
+                                validationWarning.classList.add('hidden');
+                        }
 
-  rows.forEach((row, index) => {
-    if (index === 0) {
-      row.querySelectorAll('input').forEach(input => input.value = '');
-      row.querySelectorAll('select').forEach(select => select.value = '');
-      row.querySelector('.num-refills').textContent = '0';
-      row.querySelector('.row-total').textContent = '$0.00';
-    } else {
-      row.remove();
-    }
-  });
-}
+                        // Reset medication rows
+                        const container = document.getElementById('medicationsContainer');
+
+                        if (container) {
+                                const rows = container.querySelectorAll('.medication-row');
+
+                                rows.forEach((row, index) => {
+                                        if (index === 0) {
+                                                // Clear row inputs
+                                                row.querySelectorAll('input').forEach(input => input.value = '');
+                                                row.querySelectorAll('select').forEach(select => select.value = '');
+
+                                                // Reset calculated displays
+                                                updateRowCalculations(row);
+                                        } else {
+                                                row.remove();
+                                        }
+                                });
+                        }
+
+                        // Reset medication counter
+                        medicationCount = 1;
+                });
     </script>
 <!-- Disclaimer -->
 <footer class="max-w-5xl mx-auto px-4 pb-8 mt-8">
