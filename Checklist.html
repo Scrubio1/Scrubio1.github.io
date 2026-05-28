@@ -35,6 +35,71 @@
     .tooltip-wrapper:focus-within .tooltip-box {
       display: block;
     }
+    @media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  header {
+    margin-bottom: 1rem !important;
+  }
+
+  header img,
+  footer,
+  button,
+  select,
+  label[for="checklistSelect"],
+  section:has(#checklistSelect) {
+    display: none !important;
+  }
+
+  h1 {
+    color: black !important;
+    font-size: 24px !important;
+  }
+
+  header p {
+    color: black !important;
+    font-size: 14px !important;
+  }
+
+  #checklistCard {
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  #checklistTitle {
+    color: black !important;
+    margin-bottom: 1rem !important;
+  }
+
+  #taskList label {
+    background: white !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tooltip-wrapper {
+    display: none !important;
+  }
+}
   </style>
 </head>
 
@@ -80,7 +145,7 @@
     <section id="checklistCard" class="hidden bg-white rounded-xl shadow p-5">
       <h2 id="checklistTitle" class="text-2xl font-bold text-[#075190] mb-5"></h2>
 
-      <div id="importantBox" class="hidden bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-5">
+      <div id="importantBox" class="hidden bg-[#fff3e8] border-l-4 border-[#fed7aa] p-4 mb-5">
         <p id="importantText" class="text-sm leading-relaxed"></p>
       </div>
 
@@ -148,7 +213,7 @@
           "Attached Original Plan Details",
           "Attached New Plan Details",
           "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
-          "Attached enrollment verification"
+          "Attached the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center for enrollment verification"
         ],
         finalChecks: [
           "The Original PDP/MA-PD Cost in STARS matches the Total drug + premium cost on the Original Plan Details",
@@ -161,22 +226,22 @@
       switchingNoRx: {
         title: "Switching PDP/MA-PD",
         subtitle: "No Prescriptions",
-        important: "This process requires data from the Sort & Compare screen in the Medicare Plan Finder. Be sure to record the amount before proceeding or closing the browser.",
+        important: "This process requires data from the Sort & Compare screen (plan comparison screen) in the MPF. Be sure to record the amount beforee proceeding in the MPF or closing the browser. You must still save and upload the Plan Details page for quality assurance, even though the cost comes from the Sort & Compare screen in the MPF.",
         tasks: [
           "Saved Original Plan Details",
           "Saved New Plan Details",
-          "Collected the Original PDP/MA-PD Cost from the Sort & Compare page",
-          "Collected the New PDP/MA-PD Cost from the Sort & Compare page",
-          "Saved enrollment verification",
+          "Collected the Original PDP/MA-PD Cost by finding the “Total drug + premium cost” for the beneficiary’s current plan on the Sort & Compare page (plan comparison results screen)",
+          "Collected the New PDP/MA-PD Cost by finding the “Total drug + premium cost” for the beneficiary’s new plan on the Sort & Compare page (plan comparison results screen)",
+          "Saved the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center",
           "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
           "Attached Original Plan Details",
           "Attached New Plan Details",
           "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
-          "Attached enrollment verification"
+          "Attached the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center for enrollment verification"
         ],
         finalChecks: [
-          "The Original PDP/MA-PD Cost in STARS matches the Sort & Compare page",
-          "The New PDP/MA-PD Cost in STARS matches the Sort & Compare page",
+          "The Original PDP/MA-PD Cost in STARS matches the 'Total drug + premium cost' for the beneficiary's current plan on the Sort & Compare page in the MPF",
+          "The New PDP/MA-PD Cost in STARS matches the 'Total drug + premium cost' for the beneficiary's new plan on the Sort & Compare page in the MPF",
           "All Plan Details are available and show the plan names",
           "Enrollment verification is available"
         ]
@@ -188,8 +253,8 @@
         important: "",
         tasks: [
           "Saved Plan Details",
-          "Calculated the Original PDP/MA-PD Cost using Monthly Totals and coverage months",
-          "Collected the New PDP/MA-PD Cost from the Total drug + premium cost on the Plan Details",
+          "Calculated the Original PDP/MA-PD Cost by finding the “Monthly Totals” under the “Retail cost” column for the beneficiary’s preferred pharmacy and multiply by the number of coverage months",
+          "Collected the New PDP/MA-PD Cost from the “Total drug + premium cost” for the beneficiary’s preferred pharmacy on the Plan Details",
           "Saved enrollment verification",
           "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
           "Attached Plan Details",
@@ -199,7 +264,7 @@
         ],
         finalChecks: [
           "The Original PDP/MA-PD Cost in STARS is correctly calculated",
-          "The New PDP/MA-PD Cost in STARS matches the Total drug + premium cost on the Plan Details",
+          "The New PDP/MA-PD Cost in STARS matches the “Total drug + premium cost” for the beneficiary’s preferred pharmacy on the Plan Details",
           "New to Medicare is checked in STARS",
           "All Plan Details are available and show the plan name",
           "Enrollment verification is available"
