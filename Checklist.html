@@ -139,6 +139,7 @@
         <option value="switching30">Switching PDP/MA-PD – 30-Day Refill Schedule</option>
         <option value="switchingNoRx">Switching PDP/MA-PD – No Prescriptions</option>
         <option value="new30">New to Medicare PDP/MA-PD – 30-Day Refill Schedule</option>
+         <option value="newNoRx">New to Medicare PDP/MA-PD – No Prescriptions</option>
       </select>
     </section>
 
@@ -260,7 +261,7 @@
           "Attached Plan Details",
           "Checked New to Medicare under Additional Topic Details in STARS",
           "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
-          "Attached enrollment verification"
+          "Attached the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center for enrollment verification"
         ],
         finalChecks: [
           "The Original PDP/MA-PD Cost in STARS is correctly calculated",
@@ -269,7 +270,32 @@
           "All Plan Details are available and show the plan name",
           "Enrollment verification is available"
         ]
-      }
+      },
+
+      newNoRx: {
+        title: "New to Medicare PDP/MA-PD",
+        subtitle: "No Prescriptions",
+        important: "This process requires data from the Sort & Compare screen (plan comparison screen) in the MPF. Be sure to record the amount before proceeding in the MPF or closing the browser. You must still save and upload the Plan Details page for quality assurance, even though the cost comes from the Sort & Compare screen in the MPF.",
+        tasks: [
+          "Saved Plan Details",
+          "Entered 0 for the Original PDP/MA-PD Cost",
+          "Collected the “Total monthly premium” for the plan on the Sort & Compare screen (plan comparison results screen)",
+          "Saved the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center",
+          "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
+          "Attached Plan Details",
+          "Checked New to Medicare under Additional Topic Details in STARS",
+          "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
+          "Attached the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center for enrollment verification"
+        ],
+        finalChecks: [
+          "The Original PDP/MA-PD Cost in STARS is correctly entered as 0",
+          "The New PDP/MA-PD Cost in STARS matches the “Total monthly premium” for the plan on the Sort & Compare screen",
+          "New to Medicare is checked in STARS",
+          "All Plan Details are available and show the plan name",
+          "Enrollment verification is available"
+        ]
+      },
+
     };
 
     const select = document.getElementById("checklistSelect");
