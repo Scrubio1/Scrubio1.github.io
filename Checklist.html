@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      <!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-kQkJKzDy2eS4yCkF3WSn7.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDEO Data Entry Checklist Tool</title>
+  <title>PDEO Data Entry Checklists</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,9 +19,9 @@
 
     <header class="mb-6">
       <h1 class="text-3xl md:text-4xl font-bold text-[#ffffff]">
-        PDEO Data Entry Checklist Tool
+        PDEO Data Entry Checklists
       </h1>
-      <p class="mt-2 text-lg">
+      <p class="mt-2 text-lg text-white">
         Select the checklist that matches the beneficiary’s enrollment scenario.
       </p>
     </header>
@@ -175,5 +182,14 @@
       document.querySelectorAll("input[type='checkbox']").forEach(box => box.checked = false);
     });
   </script>
+              </div>
+        </section>
+    </main>
+        <!-- Disclaimer -->
+    <footer class="max-w-5xl mx-auto px-4 pb-8 mt-8">
+        <p class="text-xs md:text-sm text-white leading-relaxed">
+            This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $1,500,000 with 100% funding by ACL/HHS. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. government.
+        </p>
+    </footer>
 </body>
 </html>
