@@ -139,7 +139,10 @@
         <option value="switching30">Switching PDP/MA-PD – 30-Day Refill Schedule</option>
         <option value="switchingNoRx">Switching PDP/MA-PD – No Prescriptions</option>
         <option value="new30">New to Medicare PDP/MA-PD – 30-Day Refill Schedule</option>
-         <option value="newNoRx">New to Medicare PDP/MA-PD – No Prescriptions</option>
+        <option value="newNoRx">New to Medicare PDP/MA-PD – No Prescriptions</option>
+        <option value="newConNon30">New to Medicare PDP/MA-PD - Consistent Non-30-Day Refill Schedule </option> 
+        <option value="newANDswitching30">New to Medicare PDP/MA-PD (This Year) and Switching PDP/MA-PD (Next Year) - 30-Day Refill Schedule </option>
+        <option value="newANDswitchingNoRx">New to Medicare PDP/MA-PD (This Year) and Switching PDP/MA-PD (Next Year) - No Prescriptions </option>
       </select>
     </section>
 
@@ -202,7 +205,7 @@
     const checklists = {
       switching30: {
         title: "Switching PDP/MA-PD",
-        subtitle: "With Prescriptions on a 30-Day Refill Schedule",
+        subtitle: "Prescriptions on a 30-Day Refill Schedule",
         important: "",
         tasks: [
           "Saved Original Plan Details",
@@ -250,7 +253,7 @@
 
       new30: {
         title: "New to Medicare PDP/MA-PD",
-        subtitle: "With Prescriptions on a 30-Day Refill Schedule",
+        subtitle: "Prescriptions on a 30-Day Refill Schedule",
         important: "",
         tasks: [
           "Saved Plan Details",
@@ -267,7 +270,7 @@
           "The Original PDP/MA-PD Cost in STARS is correctly calculated",
           "The New PDP/MA-PD Cost in STARS matches the “Total drug + premium cost” for the beneficiary’s preferred pharmacy on the Plan Details",
           "New to Medicare is checked in STARS",
-          "All Plan Details are available and show the plan name",
+          "All Plan Details are available and show the plan names",
           "Enrollment verification is available"
         ]
       },
@@ -291,7 +294,87 @@
           "The Original PDP/MA-PD Cost in STARS is correctly entered as 0",
           "The New PDP/MA-PD Cost in STARS matches the “Total monthly premium” for the plan on the Sort & Compare screen",
           "New to Medicare is checked in STARS",
-          "All Plan Details are available and show the plan name",
+          "All Plan Details are available and show the plan names",
+          "Enrollment verification is available"
+        ]
+      },
+
+            newConNon30: {
+        title: "New to Medicare PDP/MA-PD",
+        subtitle: "Prescription Refills on a Consistent Non-30-Day Schedule",
+        important: "In this scenario, medications are all refilled on the same non-30-day schedule.",
+        tasks: [
+          "Saved Plan Details",
+          "Calculated the Original PDP/MA-PD Cost by finding the “Monthly Totals” in the “Retail cost” column on the Plan Details for the beneficiary’s preferred pharmacy and multiplying by the number of refills during the coverage period.",
+          "Collected the New PDP/MA-PD Cost from the “Total drug + premium cost” for the beneficiary’s preferred pharmacy on the Plan Details",
+          "Saved the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center",
+          "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
+          "Attached Plan Details",
+          "Checked New to Medicare under Additional Topic Details in STARS",
+          "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
+          "Attached the Enrollment Request Received page or the notice to the beneficiary’s Medicare Message Center for enrollment verification"
+        ],
+        finalChecks: [
+          "The Original PDP/MA-PD Cost in STARS is calculated correctly",
+          "The New PDP/MA-PD Cost in STARS is calculated correctly",
+          "New to Medicare is checked in STARS",
+          "All Plan Details are available and show the plan names",
+          "Enrollment verification is available"
+        ]
+      },
+
+                  newANDswitching30: {
+        title: "New to Medicare PDP/MA-PD (This Year) and Switching PDP/MA-PD (Next Year )",
+        subtitle: "Prescriptions on a 30-Day Refill Schedule",
+        important: "",
+        tasks: [
+          "Saved the New to Medicare PDP/MA-PD Plan Details (Plan Details for the initial Medicare PDP/MA-PD enrollment for the current year)",
+          "Saved the Current PDP/MA-PD Plan Details for Next Year (Plan Details for the Medicare PDP/MA-PD initially enrolled in but reflecting costs for the upcoming year)",
+          "Saved the Switching PDP/MA-PD Plan Details (Plan Details for the Medicare PDP/MA-PD the beneficiary is switching to for the upcoming year)",
+          "Calculated the Original PDP/MA-PD Cost by multiplying the “Monthly Total” in the Retail Cost column (excluding premium) from the New to Medicare PDP/MA-PD Plan Details by the number of coverage months, then adding that to the “Total drug + premium cost” from the Current PDP/MA-PD Plan Details for next year",
+          "Calculated the New PDP/MA-PD Cost by adding the “Total drug + premium cost” from the New to Medicare PDP/MA-PD Plan Details to the “Total drug + premium cost” from the Switching PDP/MA-PD Plan Details for next year",
+          "Saved the Enrollment Request Received pages or the notices to the beneficiary’s Medicare Message Center for both enrollments (this year and next year)",
+          "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
+          "Checked New to Medicare under Additional Topic Details in STARS",
+          "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
+          "Attached New to Medicare PDP/MA-PD Plan Details",         
+          "Attached Current PDP/MA-PD Plan Details for Next Year",
+          "Attached Switching PDP/MA-PD Plan Details",       
+          "Attached the Enrollment Request Received pages or the notices to the beneficiary’s Medicare Message Center for both enrollments (this year and next year)",
+        ],
+        finalChecks: [
+          "The Original PDP/MA-PD Cost in STARS is calculated correctly",
+          "The New PDP/MA-PD Cost in STARS is calculated correctly",
+          "New to Medicare is checked in STARS",
+          "All Plan Details are available and show the plan names",
+          "Enrollment verification is available"
+        ]
+      },
+
+                  newANDswitchingNoRx: {
+        title: "New to Medicare PDP/MA-PD (This Year) and Switching PDP/MA-PD (Next Year )",
+        subtitle: "No Prescriptions",
+        important: "This process requires data from the Sort & Compare screen (plan comparison screen) in the MPF. Be sure to record the amounts before proceeding in the MPF or closing the browser. You must still save and upload all Plan Details pages for quality assurance, even though the costs come from the Sort & Compare screen in the MPF.",
+        tasks: [
+          "Saved the New to Medicare PDP/MA-PD Plan Details (Plan Details for the initial Medicare PDP/MA-PD enrollment for the current year)",
+          "Saved the Current PDP/MA-PD Plan Details for Next Year (Plan Details for the Medicare PDP/MA-PD initially enrolled in but reflecting costs for the upcoming year)",
+          "Saved the Switching PDP/MA-PD Plan Details (Plan Details for the Medicare PDP/MA-PD the beneficiary is switching to for the upcoming year)",
+          "Collected the “Total monthly premium” for the plan on the Sort & Compare screen (plan comparison results screen)",
+          "Calculated the New PDP/MA-PD Cost by finding the “Total drug + premium cost” on the Sort & Compare screen for the New to Medicare PDP/MA-PD (current year) and adding it to the “Total drug + premium cost” on the Switching PDP/MA-PD (next year) on the Sort & Compare screen",
+          "Saved the Enrollment Request Received pages or the notices to the beneficiary’s Medicare Message Center for both enrollments (this year and next year)",
+          "Entered the Original PDP/MA-PD Cost and New PDP/MA-PD Cost in STARS",
+          "Checked New to Medicare under Additional Topic Details in STARS",
+          "Checked Enrollment in either the Medicare Advantage or Medicare Part D sub-category",
+          "Attached New to Medicare PDP/MA-PD Plan Details",         
+          "Attached Current PDP/MA-PD Plan Details for Next Year",
+          "Attached Switching PDP/MA-PD Plan Details",       
+          "Attached the Enrollment Request Received pages or the notices to the beneficiary’s Medicare Message Center for both enrollments (this year and next year)",
+        ],
+        finalChecks: [
+          "The Original PDP/MA-PD Cost in STARS is entered as 0",
+          "The New PDP/MA-PD Cost in STARS is calculated correctly",
+          "New to Medicare is checked in STARS",
+          "All Plan Details are available and show the plan names",
           "Enrollment verification is available"
         ]
       },
