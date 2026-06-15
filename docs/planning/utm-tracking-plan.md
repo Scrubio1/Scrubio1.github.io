@@ -103,10 +103,7 @@ The following naming patterns are proposed to maintain consistent reporting with
 
 ---
 
-## News Bulletin
 
-```text
-?utm_source=news_bulletin&utm_medium=email
 ```
 
 ---
