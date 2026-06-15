@@ -21,9 +21,40 @@
             --brand-sky: #00aeef;
             --brand-orange: #f18c20;
         }
+        .nav-button {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    
+    background: transparent;
+    color: #ffffff;
+
+    border: 2px solid #f18c20;
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+    background-color: rgba(241, 140, 32, 0.15);
+    text-decoration: none;
+}
+
+.nav-button:focus {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
     </style>
 </head>
+
+
 <body class="min-h-screen py-8 px-4" style="background-color: #0e76bc;">
+    
     <main class="max-w-6xl mx-auto p-4 md:p-8">
     <div class="mb-4">
 <a href="https://www.shiptacenter.org"
@@ -36,6 +67,7 @@
          class="h-12 md:h-14 object-contain">
          <br>
 </a>
+<a href="/" class="nav-button">← All Tools</a>
     </div>    
         <!-- Page Header -->
         <header class="bg-white rounded-lg shadow-lg p-6 mb-6 border-t-4" style="border-color: var(--brand-sky);">

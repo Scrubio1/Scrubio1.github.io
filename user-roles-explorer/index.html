@@ -38,9 +38,10 @@
     /* SHIP TA logo area */
     .logo-row {
       max-width: 900px;
-      margin: 0 auto 1rem;
+      margin: 0 auto 0;
       display: flex;
-      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .logo {
@@ -227,6 +228,37 @@
         min-width: unset;
       }
     }
+ 
+    .nav-button {
+     display: block;
+     width: fit-content;
+     margin: 0 auto 12px 0;
+    padding: 8px 16px;
+    text-align: left;
+
+    background: transparent;
+    color: #ffffff;
+
+    border: 2px solid #f18c20;
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+    background-color: rgba(241, 140, 32, 0.15);
+    text-decoration: none;
+}
+
+.nav-button:focus {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+} 
   </style>
 </head>
 
@@ -236,16 +268,17 @@
 
     <!-- SHIP TA Logo -->
     <div class="logo-row">
-      <a href="https://www.shiptacenter.org"
+      <br href="https://www.shiptacenter.org"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="Visit the SHIP Technical Assistance Center website">
-
         <img src="../images/SHIPTagWhite.png"
              alt="State Health Insurance Assistance Program (SHIP) Navigating Medicare logo"
              class="logo">
-
+    </br>
+  
       </a>
+      <a href="/" class="nav-button">← All Tools</a>
     </div>
 
     <!-- STARS Simulation -->

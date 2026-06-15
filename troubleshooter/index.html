@@ -251,6 +251,36 @@
         width: 100%;
       }
     }
+    .nav-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 12px 0;
+    padding: 8px 16px;
+    text-align: left;
+
+    background: transparent;
+    color: #333652;
+
+    border: 2px solid #f18c20;
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+    background-color: rgba(241, 140, 32, 0.15);
+    text-decoration: none;
+}
+
+.nav-button:focus {
+    outline: 3px solid #333652;
+    outline-offset: 2px;
+}
   </style>
 </head>
 
@@ -270,11 +300,12 @@
           <img src="../images/SHIPTAClogo.png"
                alt="State Health Insurance Assistance Program (SHIP) Technical Assistance Center logo"
                class="logo">
-
+          
+          
         </a>
-
+      
       </div>
-
+      <a href="/" class="nav-button">← All Tools</a>
       <h2>Troubleshoot STARS Access</h2>
 
       <p class="subtitle">
