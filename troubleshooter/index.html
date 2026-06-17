@@ -368,7 +368,7 @@
   </div>
 
   <script>
-    const helpDeskContact = "Contact the ResolveSoft STARS Help Desk at ResolveSoftSTARSHelpDesk@resolvesoft.com or (703) 594-1589.";
+    const helpDeskContact = "Contact the ResolveSoft STARS Help Desk at <a href=\"mailto:ResolveSoftSTARSHelpDesk@resolvesoft.com\">ResolveSoftSTARSHelpDesk@resolvesoft.com</a> or (703) 594-1589.";
 
     const flows = {
       username: {
@@ -607,7 +607,7 @@
       stepQuestionEl.focus();
 
       if (step.end) {
-        stepInstructionEl.textContent = step.end;
+        stepInstructionEl.innerHTML = step.end;
         return;
       }
 
