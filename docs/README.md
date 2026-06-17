@@ -1,135 +1,193 @@
 # SHIP Interactive Tools
 
-**Last Updated:** May 19, 2026
+**Website:** https://tools.shiptacenter.org
 
-SHIP Interactive Tools is a collection of static HTML/CSS/JavaScript web apps designed to support common SHIP and STARS workflows through guided, task-focused interactive resources.
+## About
 
-The current project includes PDEO cost calculation web apps, STARS troubleshooting tools, and interactive STARS reference tools.
+SHIP Interactive Tools is a growing collection of web-based applications developed by the SHIP Technical Assistance Center to support SHIP staff, counselors, trainers, managers, and administrators.
 
----
+The platform provides practical, task-focused resources that streamline common SHIP workflows, improve consistency, and support accurate completion of program activities. Current tools include PDEO calculators, PDEO process checklists, STARS troubleshooting resources, and STARS reference tools.
 
-# Current Web Apps
+Following a successful development and testing phase, SHIP Interactive Tools is transitioning to a production environment at tools.shiptacenter.org, where resources can be accessed by SHIP team members nationwide.
 
-## PDEO Cost Calculators
+## Overview
 
-A collection of guided web apps that support SHIP counselors in calculating Original PDP/MA-PD Cost for specific enrollment scenarios.
+SHIP Interactive Tools is a collection of web-based resources developed by the SHIP Technical Assistance Center (SHIP TA Center) to support SHIP staff, counselors, trainers, and administrators.
 
-### Included PDEO Calculators
+The platform provides guided calculators, troubleshooting resources, checklists, and reference tools designed to simplify common workflows, improve consistency, and reduce the time required to complete complex tasks.
 
-#### 1. New to Medicare PDP/MA-PD  
-##### Prescriptions on a Consistent Non-30-Day Refill Schedule
-
-Calculates Original PDP/MA-PD Cost using:
-- Monthly Total
-- Refill Frequency
-- Coverage Months
-
-#### 2. New to Medicare PDP/MA-PD  
-##### Prescriptions on a Mixed Non-30-Day Refill Schedule
-
-Calculates Original PDP/MA-PD Cost using:
-- Multiple medications
-- Individual retail costs
-- Individual refill frequencies
-- Aggregated totals
-
-#### 3. New to Medicare PDP/MA-PD (this year) and Switching PDP/MA-PD (next year)  
-##### Prescriptions on a 30-Day Refill Schedule
-
-Calculates Original PDP/MA-PD Cost using:
-- New to Medicare PDP/MA-PD Plan Details (current year)
-- Current PDP/MA-PD Plan Details for Next Year
-- Combined cost calculations
+All tools are designed to be intuitive, mobile-friendly, accessible, and easy to maintain.
 
 ---
 
-## STARS Login Troubleshooter
+## Intended Audience
 
-An interactive troubleshooting web app that helps users identify and resolve common STARS login, account setup, and access issues through guided questions and scenario-based troubleshooting paths.
+SHIP Interactive Tools is designed for:
 
----
+- SHIP staff and volunteers
+- MIPPA staff and volunteers who uilize STARS for reporting
 
-## STARS User Role Explorer
 
-An interactive reference web app that helps users understand STARS user roles, permissions, and hierarchy visibility through searchable and guided role exploration.
-
----
-
-# Design Approach
-
-These web apps are designed as guided tools rather than full instructional resources.
-
-Current design goals include:
-- Reducing cognitive load
-- Using consistent layouts and interaction patterns
-- Supporting mobile-friendly use
-- Providing guided workflows
-- Supporting scenario-based tasks
-- Maintaining consistent branding and navigation patterns
+These tools serve as workflow supports and reference resources and should be used alongside official SHIP policies, procedures, and training materials.
 
 ---
 
-# Technical Structure
+## Available Tools
 
-- Static HTML/CSS/JavaScript implementation
-- No backend or server-side processing
-- No stored user data
-- Tailwind CSS used for styling
-- Standalone responsive web apps
-- Shared branding/assets across tools
+### PDEO PDP/MA-PD Cost Calculators
+
+Interactive calculators that assist users with determining Original PDP/MA-PD costs for a variety of enrollment scenarios.
+
+Current calculators support:
+
+- New-to-Medicare beneficiaries with 30-day refill schedules
+- New-to-Medicare beneficiaries with non-30-day refill schedules
+- Mixed refill frequency scenarios
+- Current-year and next-year plan comparison workflows
+
+### PDEO Data Entry Checklists
+
+Interactive checklists that guide users through PDEO-related processes and data entry activities.
+
+These checklists help:
+
+- Improve consistency
+- Reduce missed steps
+- Support quality assurance
+- Provide workflow tracking
+
+### STARS Login Troubleshooter
+
+A guided troubleshooting tool designed to assist users with resolving common STARS account and access issues.
+
+Topics include:
+
+- Login problems
+- Password issues
+- Account setup questions
+- Access and permission concerns
+- Escalation guidance
+
+### STARS User Role Explorer
+
+An interactive reference tool that provides information about STARS roles, permissions, and visibility throughout the system.
+
+Features include:
+
+- Role descriptions
+- Permission references
+- Hierarchy visibility guidance
+- Role comparison support
 
 ---
 
-# Accessibility Work
+## Design Principles
+
+The platform is built around several core principles:
+
+- Simplicity
+- Accessibility
+- Consistency
+- Mobile responsiveness
+- Guided workflows
+- Reduced cognitive load
+- User-centered design
+
+The goal is to provide practical resources that help SHIP team members complete tasks accurately and efficiently.
+
+---
+
+## Accessibility
+
+Accessibility is a core component of the project.
 
 Current accessibility considerations include:
-- Proper heading structure
-- Labels associated with form inputs
-- Keyboard-accessible interactive elements
-- Responsive layouts and zoom support
-- Validation messaging
-- Color contrast considerations
-- Screen reader support through live regions and descriptive labeling
+
+- Semantic page structure
+- Keyboard-accessible navigation and controls
+- Descriptive labels and alternative text
+- Visible focus indicators
+- Responsive layouts
+- Zoom compatibility
+- Screen reader support
+- Color contrast review
+
+Accessibility improvements are reviewed and implemented as part of ongoing development.
 
 ---
 
-# Workflow
+## Technical Architecture
 
-Typical workflow:
+SHIP Interactive Tools uses a static website architecture.
 
-1. Edit and test web apps in VS Code
-2. Commit changes through Git
-3. Push updates to GitHub
-4. Review functionality and usability in the development environment
+### Technologies
 
----
+- HTML5
+- CSS3
+- JavaScript
+- Shared graphical assets
+- GitHub Pages hosting
 
-# Development Notes
+### Characteristics
 
-Current development priorities include:
-1. Accessibility review and testing
-2. Mobile usability testing
-3. Branding consistency review
-4. Stakeholder review and feedback
-5. Deployment and rollout planning
-
-Feedback and enhancement notes are tracked separately within the repository.
-
----
-
-# Deployment Notes
-
-The web apps are currently hosted in a development/testing environment using GitHub Pages.
-
-Current deployment planning includes:
-- SHIP-owned subdomain routing
-- Resource Library and Toolbox access points
-- Partial rollout testing with selected SHIP networks
-- ACL review and approval processes
-- Ongoing maintenance and update workflows
+- No server-side processing
+- No user accounts
+- No application data storage
+- Responsive design
+- Lightweight implementation
+- Easy deployment and maintenance
 
 ---
 
-# Disclaimer
+## Analytics
 
-This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $3,000,000 with 100% funding by ACL/HHS. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. government.
+The platform uses Plausible which provides privacy-friendly analytics to understand overall site usage and support continuous improvement efforts.
+
+No application data or user-generated content is stored by the tools themselves.
+
+---
+
+## Development Workflow
+
+Typical development activities include:
+
+1. Design and development in Visual Studio Code
+2. Local testing and validation
+3. Accessibility review
+4. Git version control
+5. GitHub-based deployment workflow
+6. Production publishing to the SHIP Tools platform
+
+---
+
+## Project Goals
+
+The long-term goals of SHIP Interactive Tools are to:
+
+- Improve workflow efficiency
+- Increase consistency across SHIP programs
+- Reduce training burden
+- Improve usability of complex processes
+- Provide scalable digital resources for the SHIP network
+
+---
+
+## Project Evolution
+
+SHIP Interactive Tools began as a development initiative focused on creating targeted resources for specific SHIP workflows. As new tools were developed and stakeholder feedback was incorporated, the project expanded into a centralized platform for interactive SHIP resources.
+
+The repository now serves as the source code and documentation for the tools published through tools.shiptacenter.org and will continue to grow as additional workflow and reference resources are introduced.
+ 
+ ---
+
+## SHIP Technical Assistance Center
+
+Learn more about the SHIP Technical Assistance Center:
+
+https://www.shiptacenter.org
+
+---
+
+## Disclaimer
+
+This project is supported by the Administration for Community Living (ACL), U.S. Department of Health and Human Services (HHS) as part of a financial assistance award totaling $1,500,000 with 100% funding by ACL/HHS. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement, by ACL/HHS or the U.S. Government.
