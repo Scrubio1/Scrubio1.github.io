@@ -1,43 +1,32 @@
 # Roadmap
 
-This document outlines planned enhancements and future development ideas for the SHIP Interactive Tools platform
+This document outlines planned enhancements and future development ideas for SHIP Interactive Tools.
 
-Last updated: June 2026
-
-# In Progress
-## Topic
-- Item 
-
----
-
-# Planned Enhancements
+Last Updated: June 2026
 
 ## PDEO Tools
 
-### Calculator Improvements
-- Create a Mixed Non-30-Day Cycle version of the New and Switching calculator.
-
-### Checklist Enhancements
-- Create a New to Medicare mixed refill schedule checklist.
-
----
+- Create a Mixed Non-30-Day Cycle version of the New and Switching Calculator.
+- Create a New to Medicare Mixed Refill Schedule Checklist.
 
 ## STARS Tools
 
-### Troubleshooter
-- Add a link to STARS 
-
-### User Roles Explorer
-- x
-
----
-
-# Future Tool Ideas
-
-## Topic
+- Add direct links to STARS where appropriate in the Troubleshooter.
+- Expand Troubleshooter scenarios as new support issues are identified.
 - 
 
-## Training Resources
+## Accessibility
+
+- Review all tools for keyboard accessibility.
+- Improve screen reader experience where needed.
+- Continue accessibility testing and refinement.
+
+## Platform
+
+- Improve consistency of branding, navigation, and user experience.
+- Expand analytics reporting and traffic tracking.
+
+## Considerations
+
 - 
-
-
+- Additional reference and training resources.

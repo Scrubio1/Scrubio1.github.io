@@ -1,22 +1,24 @@
+
 # Changelog
 
-All notable changes to SHIP Interactive Tools will be documented in this file
+All notable changes to SHIP Interactive Tools will be documented in this file.
 
-
-## [06/17/2026]
+## [2026-06-17]
 
 ### Improved
-- Made support email addresses in within the STARS Troubleshooter clickable
+- Made support email addresses within the STARS Troubleshooter clickable.
 
-## [06/15/2026]
+## [2026-06-15]
 
-### Added 
-- Added an "All Tools" button to Calculator Index page, STARS Troubleshooter and User Roles Explorer that will take users back to the main index page.
-- Added favicon image to each page
-
-## [06-11-2026]
 ### Added
-CNAME was added
+- Added an "All Tools" button to the Calculator Index page, STARS Troubleshooter, and User Roles Explorer.
+- Added favicon support across the platform.
+
+## [2026-06-11]
+
+### Added
+- Added CNAME configuration for custom domain support.
+
 
 ## [05-29-2026]
 ### Improved
@@ -26,9 +28,9 @@ CNAME was added
 
 ### Added
 - Added icon attributions
-- Added PDEO checklist to main index page##
+- Added PDEO checklist to main index page
 - 
--  [05-11-2025]
+## [05-11-2025]
 
 ### Improved
 - Improved wording of the new and switching scenario based on Amy's suggestion to show that two enrollment periods/years are involved. Updated text reads, "“During OEP, you may assist beneficiaries who are new to Medicare PDP/MA-PD with an enrollment for this year (see the New to Medicare PDP/MA-PD section above for qualifications) and choose to switch to a different PDP/MA-PD with coverage beginning in the upcoming year.”
