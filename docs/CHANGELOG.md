@@ -3,6 +3,11 @@
 
 All notable changes to SHIP Interactive Tools will be documented in this file.
 
+## [2026-06-18]
+
+### Improved
+- - Renamed the platform from "SHIP Interactive User Tools" to "SHIP Interactive Tools" for simpler, more consistent branding across the website and project documentation.
+
 ## [2026-06-17]
 
 ### Improved
