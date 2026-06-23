@@ -8,6 +8,8 @@ Last Updated: June 2026
 
 - Create a Mixed Non-30-Day Cycle version of the New and Switching Calculator.
 - Create a New to Medicare Mixed Refill Schedule Checklist.
+- Evaluate feasibility of printable/PDF calculator results.
+- Evaluate placement of a notice clarifying that calculator results are intended as calculation aids and do not replace required documentation for reporting, auditing, or cost verification.
 
 ## STARS Tools
 
