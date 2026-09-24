@@ -3,6 +3,12 @@
 
 All notable changes to SHIP Interactive Tools will be documented in this file.
 
+## September 24, 2026
+
+### Changed
+- Expanded the Mixed Refill Schedule calculator's Cost Breakdown to display all prescriptions without requiring scrolling within the results panel.
+
+
 ## [2026-07-27]
 
 ### Status
